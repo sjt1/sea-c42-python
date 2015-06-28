@@ -1,11 +1,11 @@
 
 
-def mainPrompt():
+def main_menu():
     a = input("Choose from the following:", "T - Send a (T)hank You",
         "R - Create a Report", "quit - Quit the program")
 
     if (a == "T"):
-        thankYouMenu()
+        thankYou()
 
     elif (a == "R"):
         report()
@@ -22,7 +22,7 @@ Sum their list of donations and print out their info starting with
 donor who has the highest sum.
 '''
 
-def thankYouMenu():
+def thankYou():
     a = input("Please enter a name, or choose from the following:",
         "list - Print a list of previous donors", "quit - Return to main menu")
 
@@ -32,6 +32,8 @@ def thankYouMenu():
     elif (a == "quit"):
         mainPrompt()
 
+
+'''
     elif (a == ""):
         Check that the name is in the database - iterate over names.
 
@@ -43,7 +45,7 @@ def thankYouMenu():
             add name to database
             and prompt user to enter amount
             call function numberVerify()
-
+'''
 '''
 
 donors = ["Spencer Tower", "Bill Gates", "Incredible Hulk", "Gandalf",
@@ -52,7 +54,7 @@ donors = ["Spencer Tower", "Bill Gates", "Incredible Hulk", "Gandalf",
 donations = [[100], [50]]
 
 def donorList()
-print(donors)  print alphabetically
+print(donors)
 
 for i in donors:
 
@@ -60,7 +62,6 @@ for i in donors:
     print("Please enter a donation amount or 'quit'")
 
 
-'''
 print("""Dear %s,
     Thank you so much for you kind donation of %s.  We here at the
     foundation for Super Heros in Need of Capes greatly appreciate your
@@ -69,9 +70,6 @@ print("""Dear %s,
 
 
 
-
-
-'''
 
 donors.append()
 donations.append() top list
@@ -100,12 +98,9 @@ def sendThankYou(fullName, amount):
 def list():
     a for loop that iterates over the list of donor names and returns
     them in alphabetical order.
-
-
-
-Print("Welcome to Mailroom Madness!")
-
-mainPrompt()
-
-
 '''
+
+
+print("Welcome to Mailroom Madness!")
+
+main_menu()
