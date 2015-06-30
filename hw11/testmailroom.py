@@ -43,13 +43,7 @@ quit - Return to main menu
             for i in name:
                 print(name[0])
                 break
-
-        print("")    # Adds a blank line
-
         thank_you_menu()
-
-    elif (user_input == "quit"):
-        main_menu()
 
     elif (user_input in donor_list):
         x = input("""Please enter a donation amount or 'quit':
@@ -67,6 +61,9 @@ quit - Return to main menu
         donation(float(x))
         print_canned_letter(user_input, x)
 
+    elif (user_input == "quit"):
+        main_menu()
+
 
 def report():
     for donor in donor_list[0:]:
@@ -77,16 +74,12 @@ def report():
             break
 
 
-#  def iterate_inner_list(x):
-
-
 def donation(amount):
     if (amount == int or float):
         donor_list.append(float(amount))
 
 
 def print_canned_letter(donor, amount):
-
     print('''Dear %s,
 Thank you so much for your kind donation of $%s!  We here at The Foundation
 for Capeless Super Heroes appreciate your generosity.  Your money will
