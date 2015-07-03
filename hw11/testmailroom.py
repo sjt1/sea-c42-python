@@ -6,7 +6,7 @@ from operator import itemgetter
 
 donor_list = [['Spencer Tower', 20, 5, 10], ['Bill Gates', 100, 1000, 30],
               ['Incredible Hulk', 20, 15, 70], ['Gandalf', 1, 400, 4],
-              ['Smeagle', 10, 40, 50]]    # List of donors
+              ['Smeagle', 10, 40, 50]]
 
 
 def main_menu():
@@ -22,7 +22,6 @@ quit - Quit the program
 
     elif (user_input == "R"):
         report()
-        main_menu()
 
     elif (user_input == "quit"):
         exit()
@@ -41,7 +40,7 @@ quit - Return to main menu
     if (user_input == "list"):
         for name in donor_list:
             for i in name:
-                print(name[0])
+                return(name[0])
                 break
         thank_you_menu()
 
@@ -54,7 +53,7 @@ quit - Return to main menu
 
     elif (user_input not in donor_list):
         donor_list.append([user_input])
-        print(donor_list)
+        return(donor_list)
         x = input("""Please enter a donation amount or 'quit':
 
 > """)
@@ -62,16 +61,17 @@ quit - Return to main menu
         print_canned_letter(user_input, x)
 
     elif (user_input == "quit"):
+
         main_menu()
 
 
 def report():
-    for donor in donor_list[0:]:
-        for i in donor[0:]:
-            x = 0
+    print('Name      |    Total   |    #   |    Average')
+    for donor in donor_list:
+        x = 0
+        for i in donor[1:]:
             x = x + i
-            print(x)
-            break
+        print("%s | %s | %s " % (donor[0], x, len(donor[1:]), x / len(donor[1:])))
 
 
 def donation(amount):
@@ -80,12 +80,13 @@ def donation(amount):
 
 
 def print_canned_letter(donor, amount):
-    print('''Dear %s,
+    return('''Dear %s,
 Thank you so much for your kind donation of $%s!  We here at The Foundation
 for Capeless Super Heroes appreciate your generosity.  Your money will
 go towards ensuring that no super hero goes another night capeless and
 each one can continue to fight crime with dignity and stay super.''' % (donor, float(amount)))
 
+    thank_you_menu()
 
 print("Welcome to Mailroom Madness!\n")
 
