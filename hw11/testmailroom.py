@@ -3,9 +3,9 @@
 # Mailroom Madness
 
 
-donor_list = [['Spencer Tower', [20, 5, 10]], ['Bill Gates', [100, 1000, 30]],
-              ['Incredible Hulk', [20, 15, 70]], ['Gandalf', [1, 400, 4]],
-              ['Smeagle', [10, 40, 50]]]
+donor_list = [['Spencer Tower', 20, 5, 10], ['Bill Gates', 100, 1000, 30],
+              ['Incredible Hulk', 20, 15, 70], ['Gandalf', 1, 400, 4],
+              ['Smeagle', 10, 40, 50]]
 
 
 def main_menu():
@@ -42,7 +42,7 @@ list - Print a list of previous donors\nquit - Return to main menu\n> ''')
 
 
 def report():
-    print('Name  \t\tTotal  \t\t#  \t\tAverage')
+    print('Name  \t\t\tTotal  \t\t\t#  \t\t\tAverage')
     for donor in donor_list:
         x = 0
         for i in donor[1:]:
@@ -53,14 +53,13 @@ def report():
 def append_donation(name):
     for donor in donor_list:
         if (name == donor[0]):
-            amount = input("Please enter a donation amount.\n> ")
-            donor_list[donor][1].append(float(amount))
+            amount = float(input("Please enter a donation amount.\n> "))
+            donor.append(amount)
             print(canned_letter(name, amount))
             break
-        else:
-            donor_list.append([name, []])
-            amount = input("Please enter a donation amount.\n> ")
-            donor_list[-1][1].append(float(amount))
+        if (name != donor[0]):
+            amount = float(input("Please enter a donation amount.\n> "))
+            donor_list.append(name, amount)
             print(canned_letter(name, amount))
 
 
