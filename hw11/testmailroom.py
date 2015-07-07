@@ -10,24 +10,27 @@ donor_list = [['Spencer Tower', 20, 5, 10], ['Bill Gates', 100, 1000, 30],
 
 def main_menu():
     '''Print main menu options to terminal and take user input.'''
-    user_input = input('''Choose from the following:\nT - Send a (T)hank You
-R - Create a (R)eport\nquit - Quit the program\n> ''')
+    user_input = input('''Choose from the following:\n
+                        T - Send a (T)hank You
+                        R - Create a (R)eport\n
+                        quit - Quit the program\n> ''')
 
     if (user_input == "T"):
         thank_you_menu()
     elif (user_input == "R"):
-        report()
+        create_report()
         main_menu()
     elif (user_input == "quit"):
         exit()
     else:
-        main_menu()  # make it do nothing instead
+        main_menu()
 
 
 def thank_you_menu():
     '''Print thank you options to terminal and take user input.'''
     user_input = input('''Please enter a name or choose from the following:
-list - Print a list of previous donors\nquit - Return to main menu\n> ''')
+                        list - Print a list of previous donors\n
+                        quit - Return to main menu\n> ''')
 
     if (user_input == "list"):
         for name in donor_list:
@@ -41,26 +44,28 @@ list - Print a list of previous donors\nquit - Return to main menu\n> ''')
         append_donation(user_input)
 
 
-def report():
-    print('Name  \t\t\tTotal  \t\t\t#  \t\t\tAverage')
+def create_report():
+    print('Name\t\t\tTotal\t\t\t#\t\t\tAverage')
     for donor in donor_list:
         x = 0
         for i in donor[1:]:
             x = x + i
-        print("%s  \t\t%d  \t\t%d  \t\t%d" % (donor[0], x, len(donor[1:]), x / len(donor[1:])))
+        print("%s\t\t%d  \t\t%d  \t\t%d" % (donor[0], x, len(donor[1:]), x / len(donor[1:])))
 
 
 def append_donation(name):
+    found = False
     for donor in donor_list:
         if (name == donor[0]):
             amount = float(input("Please enter a donation amount.\n> "))
             donor.append(amount)
             print(canned_letter(name, amount))
+            found = True
             break
-        if (name != donor[0]):
-            amount = float(input("Please enter a donation amount.\n> "))
-            donor_list.append(name, amount)
-            print(canned_letter(name, amount))
+    if (not found):
+        amount = float(input("Please enter a donation amount.\n> "))
+        donor_list.append([name, amount])
+        print(canned_letter(name, amount))
 
 
 def canned_letter(donor, amount):
