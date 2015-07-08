@@ -46,15 +46,19 @@ def thank_you_menu():
 
 
 def create_report():
+    '''Create a report of donor names, their donation total, number of
+    donations, and average donation.'''
     print('\tName\t\tTotal\t\t#\tAverage')
     for donor in donor_list:
         x = 0
         for i in donor[1:]:
             x = x + i
-        print('%s\t\t$%d\t\t%d\t$%d' % (donor[0], x, len(donor[1:]), x / len(donor[1:])))
+        print('%s\t\t$%d\t\t%d\t$%d' % (donor[0], x, len(donor[1:]),
+              x / len(donor[1:])))
 
 
 def append_donation(name):
+    '''Append donations to donors and add new donors to donor list.'''
     found = False
     for donor in donor_list:
         if (name == donor[0]):
@@ -70,11 +74,12 @@ def append_donation(name):
 
 
 def canned_letter(donor, amount):
-    return('''Dear %s,
-Thank you so much for your kind donation of $%s!  We here at The Foundation
-for Capeless Super Heroes appreciate your generosity.  Your money will
-go towards ensuring that no super hero goes another night capeless and
-each one can continue to fight crime with dignity and stay super.\n''' % (donor, float(amount)))
+    '''Create canned thank-you letter with donor name and donation.'''
+    return('''Dear %s,\nThank you so much for your kind donation of $%s!
+We here at The Foundation for Capeless Super Heroes appreciate your generosity.
+Your money will go towards ensuring that no super hero goes another night
+capeless and each one can continue to fight crime with dignity and stay
+super.\n''' % (donor, float(amount)))
 
 
 print("Welcome to Mailroom Madness!\n")
